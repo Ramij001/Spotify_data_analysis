@@ -1,5 +1,11 @@
--- create table
+/*WARNING:
+    Running this script will drop the entire database if it exists. 
+    All data in the database will be permanently deleted. Proceed with caution 
+    and ensure you have proper backups before running this script.*/
 DROP TABLE IF EXISTS spotify;
+
+-- create table
+--For creating table you might get error bcpz of data type if gets error change it into NVARCHAR(MAX) or allow NULLS bcoz the data set ha a null values
 CREATE TABLE spotify (
     artist VARCHAR(255),
     track VARCHAR(255),
