@@ -374,14 +374,14 @@ with data as (
 	where Views > 0
 )
 select
-	avg(Danceability * log_view) - avg(Danceability) * avg(log_view) / STDEV(Danceability) * stdev(log_view) as dance_corr,
-	avg(Energy * log_view) - avg(Energy) * avg(log_view) / stdev(Energy) * stdev(log_view) as energy_corr,
-	avg(Loudness * log_view) - avg(Loudness) * avg(log_view) / STDEV(Loudness) * STDEV(log_view) as loudness_corr,
-	avg(Speechiness * log_view) - avg(Speechiness) * avg(log_view) / STDEV(Speechiness) * STDEV(log_view) as speech_corr,
-	avg(Liveness * log_view) - avg(Liveness) * avg(log_view) / STDEV(Liveness) * STDEV(log_view) as liveness_corr,
-	avg(Valence * log_view) - AVG(Valence) * avg(log_view) / STDEV(Valence) * STDEV(log_view) as val_corr,
-	avg(Tempo * log_view) - avg(Tempo) * avg(log_view) / STDEV(Tempo) * stdev(log_view) as trmpo_corr,
-	avg(Duration_min * log_view) - avg(Duration_min) * avg(log_view) / STDEV(Duration_min) * STDEV(log_view) as dur_min_corr,
-	avg(EnergyLiveness * log_view) - avg(EnergyLiveness) * avg(log_view) / STDEV(EnergyLiveness) * STDEV(log_view) as energyliveness_corr
+	(avg(Danceability * log_view) - avg(Danceability) * avg(log_view)) / (STDEV(Danceability) * stdev(log_view)) as dance_corr,
+	(avg(Energy * log_view) - avg(Energy) * avg(log_view)) / (stdev(Energy) * stdev(log_view)) as energy_corr,
+	(avg(Loudness * log_view) - avg(Loudness) * avg(log_view)) / (STDEV(Loudness) * STDEV(log_view)) as loudness_corr,
+	(avg(Speechiness * log_view) - avg(Speechiness) * avg(log_view)) / (STDEV(Speechiness) * STDEV(log_view)) as speech_corr,
+	(avg(Liveness * log_view) - avg(Liveness) * avg(log_view)) / (STDEV(Liveness) * STDEV(log_view)) as liveness_corr,
+	(avg(Valence * log_view) - AVG(Valence) * avg(log_view)) / (STDEV(Valence) * STDEV(log_view)) as val_corr,
+	(avg(Tempo * log_view) - avg(Tempo) * avg(log_view)) / (STDEV(Tempo) * stdev(log_view)) as trmpo_corr,
+	(avg(Duration_min * log_view) - avg(Duration_min) * avg(log_view)) / (STDEV(Duration_min) * STDEV(log_view)) as dur_min_corr,
+	(avg(EnergyLiveness * log_view) - avg(EnergyLiveness) * avg(log_view)) / (STDEV(EnergyLiveness) * STDEV(log_view)) as energyliveness_corr
 from data
 ;
